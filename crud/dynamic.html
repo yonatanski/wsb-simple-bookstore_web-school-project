@@ -1,0 +1,313 @@
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d814bf806d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <!-- stylesheet  -->
+    <link rel="stylesheet" href="style.css"/>
+        <!-- stylesheet  -->
+        <style>
+          /* .btn {
+  margin-left: 10px;
+  margin-right: 10px;
+} */
+.btn-success {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(103, 192, 103, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(103, 192, 103, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-success:hover {
+  color: #FFF;
+  background: rgb(103, 192, 103, 0.75);
+  border: 2px solid rgb(103, 192, 103, 0.75);
+}
+        </style>
+    <title>Books</title>
+  </head>
+  <body>
+    <main class="border-rounded container">
+        <div class="container  rounded mt-3 ">
+            <div class="row">
+            <div class="col-sm-12">
+            <div class="py-4 pr-5 bg-dark mt-3 text-light justify-content-between d-flex sticky-top  banner">
+            <h3 class="py-4 pr-5 ml-5 mt-3 text-light "><i class="bi bi-book"></i>Book Store</h1>
+            <div class=" ">
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-twitter"></i>
+            <i class="bi bi-youtube"></i>
+            </div>
+            </div>
+            <h3 class="text-white mt-3" id="greeting"><h3>
+            <input  class=" text-white mr-auto mt-3 btn btn-primary p-1" type="text" id="currentDateTime">
+            <a href="index.php" class="text-center">Book Registration</a>
+            
+             <div class="d-flex dynamicdata row justify-content-center mt-3">
+                  
+                              <!-- fetch dat will be displayed here  -->
+          
+                </div> 
+                <!-- spinner -->
+                <div class="d-flex justify-content-center">
+                <div id="spinner-border" class="spinner-border text-danger mb-5"  style="width: 20rem; height: 20rem;"  role="status">
+                    <span class="sr-only text-white">Loading...</span>
+                  </div>
+                </div>
+                <!-- <div class="d-flex justify-content-center">
+                  <div  class="spinner-border second text-danger mb-5"  style="width: 20rem; height: 20rem;"  role="status">
+                      <span class="sr-only text-white">Loading...</span>
+                    </div>
+                  </div> -->
+                <div class="d-flex justify-content-center">
+                <button class="btn btn-success " onclick="fectchBookDataMore()">Load More</button>
+              </div>
+                 <!-- spinner -->
+                </div>
+              </div>
+      
+               </div>
+
+
+
+            </div>
+    </main>
+    <!-- footer  -->
+    <!-- Footer -->
+    <div class="container footer sticky-bottom mb-0 mt-5">
+   <!-- Footer -->
+<footer class="page-footer font-small teal pt-4 sticky-bottom banner_bottom">
+
+<!-- Footer Text -->
+<div class="container-fluid text-center text-md-left">
+
+  <!-- Grid row -->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-6 mt-md-0 mt-3">
+
+      <!-- Content -->
+      <h5 class="text-uppercase font-weight-bold">Developers</h5>
+      <img src="./php/img/user.png" width="70px" alt="">
+      <h5>Yonatan Gosaye</h5>
+      <img src="./php/img/user.png" width="70px" alt="">
+      <h5>Samuel Mamo</h5>
+
+    </div>
+    <!-- Grid column -->
+
+    <hr class="clearfix w-100 d-md-none pb-3">
+
+    <!-- Grid column -->
+    <div class="col-md-6 mb-md-0 mb-3">
+
+      <!-- Content -->
+      <h5 class="text-uppercase font-weight-bold">CRUD WEB SITE</h5>
+      <p>CRUD stand For CREATE READ UPDATE DELETE opreation. this Simple book store website built with CRUD function</p>
+      <h5 class="text-uppercase font-weight-bold">This Website Built With the following Technologies</h5>
+      <img src="./php/img/php.png" width="90px" alt="">
+      <img src="./php/img/html.png" width="90px" alt="">
+      <img src="./php/img/css-3.png" width="90px" alt="">
+      <img src="./php/img/bootstrap.png" width="90px" alt="">
+      <img src="./php/img/mysql.png" width="90px" alt="">
+
+    </div>
+    <!-- Grid column -->
+
+  </div>
+  <!-- Grid row -->
+
+</div>
+<!-- Footer Text -->
+
+<!-- Copyright -->
+<div class="footer-copyright text-center py-3">© 2021 Copyright:
+  <a > Developed By Yontan and Samuel</a>
+</div>
+<!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</div>
+</div>
+<!-- Footer -->
+
+
+<script>
+ 
+window.onload = function() {
+    fectchBookData()
+  
+}
+
+
+
+ let responseArray = []
+ let responseArrayMore = []
+
+ let loader = true
+
+const fectchBookData = async() =>{
+
+    let response = await fetch("https://api.itbook.store/1.0/search/mongodb")
+    let data = await response.json()
+    responseArray = data.books
+    loader = await true
+    if(loader){
+    let Hider = document.getElementById('spinner-border')
+    Hider.remove()
+ }
+    console.log(data);
+    console.log(responseArray[0].price);
+   
+    let attach = document.querySelector(".dynamicdata")
+  //  <div classsName="dynamicdata target-me row justify-content-center mt-3""></div>
+ 
+    responseArray.map((book) =>{
+      const col = document.createElement("div")
+    col.className ="col-xs-6 col-sm-3"
+      
+     
+       col.innerHTML = ` 
+               
+  <div class="card">
+    <div class="image">
+      <img src="${book.image}" />
+    </div>
+    <div class="card-inner">
+      <div class="header">
+        <h5 class="text-white">${book.title}</h5>
+        <small class="text-white">${book.price}$</small>
+        <button class="btn btn-primary" type="button" onclick="fetchDetails()"> Add to Cart</button>
+    </div>
+  
+      </div>
+  </div>
+
+                 
+                 `
+       attach.appendChild(col)
+      })
+
+ 
+    
+}
+
+const fectchBookDataMore = async() =>{
+
+let response = await fetch("https://api.itbook.store/1.0/search/sql")
+let data = await response.json()
+responseArrayMore= data.books
+// loader2 =  true
+// if(loader2){
+// let Hider = document.getElementsByClassName('second')
+// Hider.remove()
+// }
+console.log(data);
+console.log(responseArrayMore[0].price);
+
+let attach = document.querySelector(".dynamicdata")
+//  <div classsName="dynamicdata target-me row justify-content-center mt-3""></div>
+
+responseArrayMore.map((book) =>{
+  const col = document.createElement("div")
+col.className ="col-xs-6 col-sm-3"
+  
+ 
+   col.innerHTML = ` 
+           
+<div class="card">
+<div class="image">
+  <img src="${book.image}" />
+</div>
+<div class="card-inner">
+  <div class="header">
+    <h5 class="text-white">${book.title}</h5>
+    <small class="text-white">${book.price}$</small>
+    <button class="btn btn-primary" type="button" onclick="fetchDetails()"> Add to Cart</button>
+</div>
+
+  </div>
+</div>
+
+             
+             `
+   attach.appendChild(col)
+  })
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date+' '+time;
+  document.getElementById("currentDateTime").value = dateTime;
+</script>
+
+
+
+<script>
+    var myDate = new Date();
+    var currentHour = myDate.getHours();
+
+    var msg;
+
+    if (currentHour < 12)
+        msg = 'Good Morning';
+    else if(currentHour == 12)
+	msg = 'Good Noon';
+    else if (currentHour >= 12 && currentHour <= 17)
+        msg = 'Good Afternoon';
+    else if (currentHour >= 17 && currentHour <= 24)
+        msg = 'Good Evening';
+
+    document.getElementById('greeting').innerHTML =
+        '<b>' + msg + '</b>';
+</script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+<script src="../crud/php/main.js"></script>
+    
+<!--     
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script> -->
+   
+  </body>
+</html>

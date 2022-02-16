@@ -1,0 +1,101 @@
+body {
+  background: #000000; /* fallback for old browsers */
+}
+.d-flex button {
+  margin: 1.5em 0.6em;
+  padding: 0.5em 2.4em;
+}
+.d-flex table {
+  margin: 1em 10em;
+}
+table .btnedit {
+  color: rgb(241, 83, 21);
+  cursor: pointer;
+}
+
+.sucess {
+  background-color: lightgreen;
+  padding: 1em;
+  text-align: center;
+}
+.error {
+  background-color: red;
+  padding: 1em;
+}
+.banner {
+  background-image: url(https://png.pngtree.com/background/20210712/original/pngtree-modern-double-color-futuristic-neon-background-picture-image_1181573.jpg);
+  background-attachment: fixed;
+  background-size: contain;
+  height: 150px;
+  border-radius: 2%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: 8px solid #1c1614;
+  box-shadow: 19px 19px 5px -9px rgba(235, 8, 130, 0.71);
+  -webkit-box-shadow: 19px 19px 5px -9px rgba(235, 8, 130, 0.71);
+  -moz-box-shadow: 19px 19px 5px -9px rgba(235, 8, 130, 0.71);
+}
+
+.rounded {
+  border: 8px solid #f54106;
+}
+
+footer {
+  background: #141e30; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #243b55, #141e30); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #243b55, #141e30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: aliceblue;
+}
+.img_card {
+  width: 300px;
+  height: 255px;
+}
+/* for Card   */
+
+.card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-color: red;
+  background-color: rgba(27, 26, 27, 0.151);
+}
+
+.card:hover {
+  background-color: rgba(255, 255, 255, 0.068);
+}
+.card > .card-inner {
+  padding: 10px;
+}
+.card .header h2,
+h3 {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+.card .header {
+  margin-bottom: 5px;
+}
+.card img {
+  width: 100%;
+}
+
+/* for loader */
+#loading {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  opacity: 0.7;
+  background-color: #fff;
+  z-index: 99;
+}
+
+#loading-image {
+  position: absolute;
+  top: 100px;
+  left: 240px;
+  z-index: 100;
+}
