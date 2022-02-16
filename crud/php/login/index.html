@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <title>login</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/d814bf806d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+  </head>
+  <style>
+    body {
+      background: rgb(8, 8, 8);
+    }
+    #frm {
+      border: solid rgb(40, 3, 250) 5px;
+      width: 25%;
+      border-radius: 60px;
+      margin: 120px auto;
+      background: rgba(255, 250, 250, 0.76);
+      padding: 50px;
+    }
+    .box {
+      border-radius: 10px;
+    }
+    #btn {
+      font-family: Raleway-SemiBold;
+      font-size: 13px;
+      letter-spacing: 1px;
+      line-height: 15px;
+      color: rgb(0, 0, 0);
+      background: #038b2591;
+      padding: 0px;
+      border-radius: 60px;
+      width: 90;
+      height: 30;
+      /* margin-left: 70%; */
+    }
+    .btn-success {
+      font-family: Raleway-SemiBold;
+      font-size: 13px;
+      color: rgba(103, 192, 103, 0.75);
+      letter-spacing: 1px;
+      line-height: 15px;
+      border: 2px solid rgba(103, 192, 103, 0.75);
+      border-radius: 40px;
+      background: transparent;
+      transition: all 0.3s ease 0s;
+    }
+
+    .btn-success:hover {
+      color: #fff;
+      background: rgb(103, 192, 103, 0.75);
+      border: 2px solid rgb(103, 192, 103, 0.75);
+    }
+  </style>
+  <body>
+    <div id="frm">
+    <h6 class="text-center">Wellcome to Book Store</h>
+      <h1 class="text-center">Login</h1>
+
+      <form name="f1" action="authentication.php" onsubmit="return validation()" method="POST">
+        <p>
+          <label class="mr-5"><strong>User Name</strong>  </label>
+          <input type="text" class="box" id="user" name="user" placeholder="  user name" />
+        </p>
+        <p>
+          <label class="mr-5"> <strong>Password</strong> </label>
+          <input type="password" class="box" id="pass" name="pass" placeholder="  password" />
+        </p>
+        <p class="mr-5 text-center">
+          <input type="submit" id="btn" value="Login" />
+        </p>
+      </form>
+    </div>
+    <!-- validation for empty field -->
+    <script>
+      function validation() {
+        var id = document.f1.user.value
+        var ps = document.f1.pass.value
+        if (id.length == "" && ps.length == "") {
+          alert("User Name and Password fields are empty")
+          return false
+        } else {
+          if (id.length == "") {
+            alert("User Name is empty")
+            return false
+          }
+          if (ps.length == "") {
+            alert("Password field is empty")
+            return false
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
